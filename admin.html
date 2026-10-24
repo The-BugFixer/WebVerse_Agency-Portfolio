@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WebVerse · Admin</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+:root{--bg:#05070d;--ink:#f3f6fb;--mute:#98a2b8;--line:rgba(255,255,255,.12);--g:#2de38a;--b:#4f8bff;--p:#9b6bff;--grad:linear-gradient(120deg,var(--g),var(--b) 55%,var(--p))}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;min-height:100vh;padding:24px 16px 60px}
+.wrap{width:min(820px,100%);margin-inline:auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+header img{height:26px}h1{font-size:22px}
+.box,.app{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:18px;padding:22px}
+label{display:grid;gap:6px;font-size:13px;color:var(--mute);margin-bottom:14px}
+input{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font:inherit}
+button{font:inherit;cursor:pointer;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);padding:10px 18px;font-weight:600}
+button.go{background:var(--grad);color:#04101a;border-color:transparent}
+button.no{color:#ff9a9a}button:disabled{opacity:.5;cursor:wait}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}.tabs button.on{background:var(--ink);color:#05070d}
+.list{display:grid;gap:14px}
+.app h3{font-size:19px}.app .role{color:var(--g);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.app p{color:#c9d1e3;margin:10px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.row{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--mute)}
+.row a{color:var(--b)}
+.act{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.top{display:flex;gap:14px;align-items:center}.av{width:56px;height:56px;border-radius:50%;object-fit:cover;background:var(--grad);flex:none;display:grid;place-items:center;color:#04101a;font-weight:700}
+#msg{margin:14px 0;font-size:14px}.err{color:#ff8a8a}.ok{color:var(--g)}.empty{color:var(--mute);text-align:center;padding:30px}
+.hide{display:none!important}
+.hint{color:var(--mute);font-size:13px;margin:0 0 12px}
+.pickhost{display:grid;gap:8px;margin-bottom:12px}.pickhost .pick{justify-self:start;padding:9px 18px;border-radius:999px;border:1px dashed rgba(255,255,255,.3);background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer;font:600 13px inherit}
+.pickhost .fitem{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.05);font-size:13px}.pickhost .fitem img,.pickhost .fitem video{width:44px;height:44px;object-fit:cover;border-radius:8px}.pickhost .fn{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pickhost .frm{width:32px;height:32px;border-radius:50%;padding:0;color:#ff9a9a}.pickhost .ferr{color:#ff8a8a;font-size:12.5px}
+.mgrid{display:flex;flex-wrap:wrap;gap:10px}.mitem{position:relative;width:110px}.mitem img,.mitem video{width:110px;height:110px;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}.mitem button{margin-top:6px;width:100%;padding:6px;font-size:12px;color:#ff9a9a}
+.tabs.main button{padding:11px 22px}
+select,textarea{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);font:inherit}
+select option{color:#111}
+.inline{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:16px}.inline label{margin:0}.inline .grow{flex:1;min-width:180px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.two{grid-template-columns:1fr}}
+.item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.item small{color:var(--mute);display:block;overflow-wrap:anywhere}.item .l{display:flex;gap:12px;align-items:center;min-width:0}
+.group-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin:10px 0 -4px}
+.files{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px}.files img{width:84px;height:84px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.files a.cv{padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--g);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="assets/logo-wordmark.png" alt="WebVerse"><button id="out" class="hide">Log out</button></header>
+
+  <section id="login" class="box">
+    <h1>WebVerse admin</h1>
+    <p style="color:var(--mute);margin:6px 0 18px">Owner login. Only you can approve members and edit the site lists.</p>
+    <label>Email<input id="em" type="email" autocomplete="username"></label>
+    <label>Password<input id="pw" type="password" autocomplete="current-password"></label>
+    <button id="in" class="go">Log in</button>
+    <p id="lmsg" class="err" style="margin-top:12px"></p>
+  </section>
+
+  <section id="panel" class="hide">
+    <div class="tabs main" id="mainTabs">
+      <button data-t="apps" class="on">Applications</button>
+      <button data-t="glance">At a glance</button>
+      <button data-t="brands">Brands</button>
+      <button data-t="enq">Brand enquiries <span id="c-enq"></span></button>
+      <button data-t="creators">Creators <span id="c-cre"></span></button>
+      <button data-t="media">Work media</button>
+    </div>
+
+    <div id="t-apps">
+      <div class="tabs" id="tabs">
+        <button data-s="pending" class="on">Pending <span id="c-pending"></span></button>
+        <button data-s="approved">Approved <span id="c-approved"></span></button>
+        <button data-s="rejected">Rejected <span id="c-rejected"></span></button>
+      </div>
+      <div id="list" class="list"></div>
+    </div>
+
+    <div id="t-glance" class="hide">
+      <form id="gForm" class="box inline">
+        <label>List<select id="gCat"><option value="skills">Skills</option><option value="languages">Languages</option><option value="tools">Tools</option><option value="usecases">Use cases</option></select></label>
+        <label id="gGrpWrap" class="hide">Language group<select id="gGrp"><option value="learned">Learned</option><option value="learning">Learning</option></select></label>
+        <label class="grow">Name<input id="gLabel" maxlength="80" placeholder="e.g. Canva"></label>
+        <button class="go" type="submit">Add</button>
+      </form>
+      <div id="gList" class="list"></div>
+    </div>
+
+    <div id="t-brands" class="hide">
+      <form id="bForm" class="box">
+        <div class="two">
+          <label>Brand name *<input id="bName" maxlength="80"></label>
+          <label>Category<input id="bCat" maxlength="60" placeholder="e.g. Restaurant · GBP & Website"></label>
+        </div>
+        <div class="two">
+          <label>Link when the logo is clicked (optional, https://…)<input id="bUrl" inputmode="url" maxlength="300"></label>
+          <div><span class="hint">Logo * (JPG, PNG or WebP, max 2 MB. Brands without a logo are not shown on the site)</span><div id="bLogoHost"></div></div>
+        </div>
+        <button class="go" type="submit">Add brand</button>
+      </form>
+      <div id="bList" class="list" style="margin-top:16px"></div>
+    </div>
+
+    <div id="t-enq" class="hide">
+      <div class="tabs" id="etabs">
+        <button data-e="new" class="on">New <span id="e-new"></span></button>
+        <button data-e="contacted">Contacted <span id="e-contacted"></span></button>
+        <button data-e="accepted">Accepted <span id="e-accepted"></span></button>
+        <button data-e="declined">Declined <span id="e-declined"></span></button>
+      </div>
+      <div id="eList" class="list"></div>
+    </div>
+
+    <div id="t-creators" class="hide">
+      <div class="tabs" id="ctabs">
+        <button data-e="new" class="on">New <span id="k-new"></span></button>
+        <button data-e="contacted">Contacted <span id="k-contacted"></span></button>
+        <button data-e="accepted">Accepted <span id="k-accepted"></span></button>
+        <button data-e="declined">Declined <span id="k-declined"></span></button>
+      </div>
+      <div id="cList" class="list"></div>
+    </div>
+
+    <div id="t-media" class="hide">
+      <form id="mForm" class="box">
+        <label>Business<select id="mProject"></select></label>
+        <div id="mPickHost"></div>
+        <p class="hint">Photos: JPG, PNG or WebP. Videos: MP4 or WebM, 5 to 10 seconds is best (max 15 MB each). The first photo becomes the card picture. Videos play only when a visitor hovers the card.</p>
+        <button class="go" type="submit">Upload</button>
+      </form>
+      <div id="mList" class="list" style="margin-top:16px"></div>
+    </div>
+
+    <p id="msg"></p>
+  </section>
+</div>
+
+<script src="js/config.js"></script>
+<script>
+(() => {
+  const C = window.WEBVERSE || {}, $ = s => document.querySelector(s);
+  if (!C.supabaseUrl || !C.supabaseKey) { $('#lmsg').textContent = 'Supabase is not set up yet. Fill supabaseUrl and supabaseKey in js/config.js.'; $('#in').disabled = true; return; }
+  const URL_ = String(C.supabaseUrl).replace(/\/+$/, ''), KEY = C.supabaseKey;
+  let token = sessionStorage.getItem('wv_admin_token') || '', status = 'pending', apps = [], tab = 'apps', estatus = 'new', enqs = [];
+  const H = json => ({ apikey: KEY, Authorization: 'Bearer ' + (token || KEY), ...(json ? { 'Content-Type': 'application/json' } : {}) });
+  const http = u => /^https?:\/\//i.test(u || '') ? u : '';
+  const say = (m, ok) => { $('#msg').className = ok ? 'ok' : 'err'; $('#msg').textContent = m; };
+  const el = (t, props = {}, ...kids) => { const n = Object.assign(document.createElement(t), props); kids.flat().forEach(k => n.append(k)); return n; };  // textContent only: applicant text is untrusted
+  const pub = (b, p) => `${URL_}/storage/v1/object/public/${b}/${p.split('/').map(encodeURIComponent).join('/')}`;
+  const ini = n => String(n).split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  async function api(path, opt = {}) {
+    const r = await fetch(`${URL_}${path}`, { ...opt, headers: { ...H(opt.json), ...(opt.headers || {}) }, body: opt.json ? JSON.stringify(opt.json) : opt.body });
+    if (r.status === 401 || (r.status === 403 && /jwt|token/i.test(await r.clone().text()))) { logout(); $('#lmsg').textContent = 'Session expired. Please log in again.'; throw new Error('auth'); }
+    return r;
+  }
+
+  async function login() {
+    $('#lmsg').textContent = '';
+    try {
+      const r = await fetch(`${URL_}/auth/v1/token?grant_type=password`, { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ email: $('#em').value.trim(), password: $('#pw').value }) });
+      const j = await r.json(); if (!r.ok || !j.access_token) throw 0;
+      token = j.access_token; sessionStorage.setItem('wv_admin_token', token); show();
+    } catch { $('#lmsg').textContent = 'Wrong email or password.'; }
+  }
+  function logout() { token = ''; sessionStorage.removeItem('wv_admin_token'); $('#panel').classList.add('hide'); $('#out').classList.add('hide'); $('#login').classList.remove('hide'); }
+  function show() { $('#login').classList.add('hide'); $('#panel').classList.remove('hide'); $('#out').classList.remove('hide'); openTab(tab); }
+  function openTab(t) {
+    tab = t; say('', true);
+    document.querySelectorAll('#mainTabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+    ['apps', 'glance', 'brands', 'enq', 'creators', 'media'].forEach(x => $('#t-' + x).classList.toggle('hide', x !== t));
+    ({ apps: loadApps, glance: loadGlance, brands: loadBrands, enq: loadEnq, creators: loadCre, media: loadMedia })[t]();
+  }
+
+  /* ---------- Applications ---------- */
+  async function signed(path) {
+    try { const r = await api(`/storage/v1/object/sign/applicant-files/${path.split('/').map(encodeURIComponent).join('/')}`, { method: 'POST', json: { expiresIn: 3600 } }); const j = await r.json(); return j.signedURL ? `${URL_}/storage/v1${j.signedURL}` : ''; } catch { return ''; }
+  }
+  async function loadApps() {
+    say('Loading…', true);
+    try { const r = await api('/rest/v1/applications?select=*&order=created_at.desc'); if (!r.ok) throw 0; apps = await r.json(); say('', true); drawApps(); }
+    catch (e) { if (e.message !== 'auth') say('Could not load applications.'); }
+  }
+  async function setStatus(id, st, btn) {
+    btn.disabled = true;
+    const r = await api(`/rest/v1/applications?id=eq.${encodeURIComponent(id)}`, { method: 'PATCH', json: { status: st, approved_at: st === 'approved' ? new Date().toISOString() : null }, headers: { Prefer: 'return=minimal' } });
+    if (!r.ok) { btn.disabled = false; return say('Could not update. Please try again.'); }
+    await loadApps(); say(st === 'approved' ? 'Approved. They are now live on your site.' : st === 'rejected' ? 'Moved to Rejected.' : 'Updated.', true);
+  }
+  async function delApp(a, btn) {
+    if (!confirm('Delete this application and its files permanently?')) return; btn.disabled = true;
+    const paths = [a.photo_path, a.cv_path, ...(a.image_paths || [])].filter(Boolean);
+    for (const p of paths) { const b = p === a.photo_path ? 'team-photos' : 'applicant-files'; await api(`/storage/v1/object/${b}/${p.split('/').map(encodeURIComponent).join('/')}`, { method: 'DELETE' }).catch(() => {}); }
+    const r = await api(`/rest/v1/applications?id=eq.${encodeURIComponent(a.id)}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } });
+    if (!r.ok) { btn.disabled = false; return say('Could not delete.'); } loadApps();
+  }
+  async function fillFiles(box, a) {
+    if (a.photo_path) box.append(el('a', { href: pub('team-photos', a.photo_path), target: '_blank', rel: 'noopener' }, el('img', { src: pub('team-photos', a.photo_path), alt: 'Profile photo', title: 'Profile photo' })));
+    for (const p of (a.image_paths || [])) { const u = await signed(p); if (u) box.append(el('a', { href: u, target: '_blank', rel: 'noopener' }, el('img', { src: u, alt: 'Attached image' }))); }
+    if (a.cv_path) { const u = await signed(a.cv_path); if (u) box.append(el('a', { className: 'cv', href: u, target: '_blank', rel: 'noopener', textContent: '📄 Open CV / Resume' })); }
+  }
+  function drawApps() {
+    ['pending', 'approved', 'rejected'].forEach(s => $('#c-' + s).textContent = '(' + apps.filter(r => r.status === s).length + ')');
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.s === status));
+    const list = apps.filter(r => r.status === status), box = $('#list'); box.replaceChildren();
+    if (!list.length) { box.append(el('div', { className: 'empty', textContent: 'Nothing here.' })); return; }
+    list.forEach(r => {
+      const ph = String(r.phone || '').replace(/\D/g, ''), link = http(r.link);
+      const av = r.photo_path ? el('img', { className: 'av', src: pub('team-photos', r.photo_path), alt: '' }) : el('div', { className: 'av', textContent: ini(r.name) });
+      const meta = el('div', { className: 'row' }, el('span', { textContent: '📞 ' + r.phone }), r.city ? el('span', { textContent: '📍 ' + r.city }) : '',
+        r.skills ? el('span', { textContent: 'Skills: ' + r.skills }) : '', link ? el('a', { href: link, target: '_blank', rel: 'noopener', textContent: 'Profile link ↗' }) : '',
+        el('span', { textContent: new Date(r.created_at).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) }));
+      const files = el('div', { className: 'files' }); fillFiles(files, r);
+      const act = el('div', { className: 'act' });
+      const add = (cls, txt, fn) => { const b = el('button', { className: cls, textContent: txt }); b.onclick = () => fn(b); act.append(b); };
+      if (r.status !== 'approved') add('go', '✓ Approve', b => setStatus(r.id, 'approved', b));
+      if (r.status === 'approved') add('no', 'Remove from site', b => setStatus(r.id, 'rejected', b));
+      if (r.status === 'pending') add('no', 'Reject', b => setStatus(r.id, 'rejected', b));
+      if (r.status === 'rejected') add('', 'Back to pending', b => setStatus(r.id, 'pending', b));
+      if (ph) act.append(el('a', { href: 'https://wa.me/' + ph, target: '_blank', rel: 'noopener' }, el('button', { textContent: 'Message on WhatsApp' })));
+      add('no', 'Delete', b => delApp(r, b));
+      box.append(el('article', { className: 'app' }, el('div', { className: 'top' }, av, el('div', {}, el('h3', { textContent: r.name }), el('span', { className: 'role', textContent: r.role }))), el('p', { textContent: r.about }), meta, files, act));
+    });
+  }
+
+  /* ---------- At a glance lists ---------- */
+  const LBL = { skills: 'Skills', languages: 'Languages', tools: 'Tools', usecases: 'Use cases' };
+  async function loadGlance() {
+    try {
+      const r = await api('/rest/v1/glance_items?select=*&order=sort.asc,created_at.asc'); if (!r.ok) throw 0; const rows = await r.json(), box = $('#gList'); box.replaceChildren();
+      Object.keys(LBL).forEach(cat => {
+        box.append(el('div', { className: 'group-h', textContent: LBL[cat] }));
+        const items = rows.filter(x => x.category === cat);
+        if (!items.length) box.append(el('div', { className: 'empty', textContent: 'Empty' }));
+        items.forEach(x => { const b = el('button', { className: 'no', textContent: 'Remove' }); b.onclick = async () => { b.disabled = true; const d = await api(`/rest/v1/glance_items?id=eq.${x.id}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } }); d.ok ? loadGlance() : (b.disabled = false, say('Could not remove.')); };
+          box.append(el('div', { className: 'item' }, el('div', { className: 'l' }, el('div', {}, x.label, x.grp ? el('small', { textContent: x.grp === 'learned' ? 'Learned' : 'Learning' }) : '')), b)); });
+      });
+    } catch (e) { if (e.message !== 'auth') say('Could not load the lists.'); }
+  }
+  $('#gCat').onchange = () => $('#gGrpWrap').classList.toggle('hide', $('#gCat').value !== 'languages');
+  $('#gForm').onsubmit = async e => {
+    e.preventDefault(); const cat = $('#gCat').value, label = $('#gLabel').value.trim(); if (!label) return say('Please type a name.');
+    const r = await api('/rest/v1/glance_items', { method: 'POST', json: { category: cat, grp: cat === 'languages' ? $('#gGrp').value : null, label, sort: Date.now() % 1000000000 }, headers: { Prefer: 'return=minimal' } });
+    if (!r.ok) return say('Could not add. Please try again.'); $('#gLabel').value = ''; say('Added. It is live on your site.', true); loadGlance();
+  };
+
+  /* ---------- Brands ---------- */
+  async function loadBrands() {
+    try {
+      const r = await api('/rest/v1/brands?select=*&order=sort.asc,created_at.asc'); if (!r.ok) throw 0; const rows = await r.json(), box = $('#bList'); box.replaceChildren();
+      if (!rows.length) box.append(el('div', { className: 'empty', textContent: 'No brands yet.' }));
+      rows.forEach(b => {
+        const logo = b.logo_path ? el('img', { className: 'av', src: pub('brand-logos', b.logo_path), alt: '', style: 'background:#fff;object-fit:contain;padding:4px' }) : el('div', { className: 'av', textContent: ini(b.name) });
+        const tog = el('button', { textContent: b.visible ? 'Hide' : 'Show' }); tog.onclick = async () => { tog.disabled = true; const d = await api(`/rest/v1/brands?id=eq.${b.id}`, { method: 'PATCH', json: { visible: !b.visible }, headers: { Prefer: 'return=minimal' } }); d.ok ? loadBrands() : (tog.disabled = false, say('Could not update.')); };
+        const del = el('button', { className: 'no', textContent: 'Delete' }); del.onclick = async () => { if (!confirm('Delete this brand?')) return; del.disabled = true; if (b.logo_path) await api(`/storage/v1/object/brand-logos/${b.logo_path.split('/').map(encodeURIComponent).join('/')}`, { method: 'DELETE' }).catch(() => {}); const d = await api(`/rest/v1/brands?id=eq.${b.id}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } }); d.ok ? loadBrands() : (del.disabled = false, say('Could not delete.')); };
+        box.append(el('div', { className: 'item', style: b.visible ? '' : 'opacity:.55' }, el('div', { className: 'l' }, logo, el('div', {}, b.name, el('small', { textContent: [b.category, b.logo_path ? '' : 'no logo: not shown on site', b.visible ? '' : 'hidden'].filter(Boolean).join(' · ') }))), el('div', { className: 'act', style: 'margin:0' }, tog, del)));
+      });
+    } catch (e) { if (e.message !== 'auth') say('Could not load brands.'); }
+  }
+  $('#bForm').onsubmit = async e => {
+    e.preventDefault(); const name = $('#bName').value.trim(), url = $('#bUrl').value.trim(), f = logoPick.files()[0];
+    if (name.length < 2) return say('Please enter the brand name.'); if (!f) return say('Please choose a logo. Brands without a logo are not shown on the site.'); if (url && !http(url)) return say('The link must start with https://');
+    if (f && (!/^image\/(jpeg|png|webp)$/.test(f.type) || f.size > 2 * 1024 * 1024)) return say('Logo must be JPG, PNG or WebP under 2 MB.');
+    const btn = e.submitter; btn.disabled = true; let logo_path = null;
+    try {
+      if (f) { logo_path = `${crypto.randomUUID()}/logo.${f.type.split('/')[1].replace('jpeg', 'jpg')}`; const u = await api(`/storage/v1/object/brand-logos/${logo_path}`, { method: 'POST', body: f, headers: { 'Content-Type': f.type } }); if (!u.ok) throw 0; }
+      const r = await api('/rest/v1/brands', { method: 'POST', json: { name, category: $('#bCat').value.trim() || null, url: url || null, logo_path, sort: Date.now() % 1000000000 }, headers: { Prefer: 'return=minimal' } });
+      if (!r.ok) throw 0; e.target.reset(); logoPick.clear(); say('Brand added. It is live on your site.', true); loadBrands();
+    } catch (err) { if (err.message !== 'auth') say('Could not add the brand. Please try again.'); }
+    btn.disabled = false;
+  };
+
+  /* ---------- Brand enquiries ---------- */
+  async function loadEnq() {
+    say('Loading…', true);
+    try { const r = await api('/rest/v1/brand_enquiries?select=*&order=created_at.desc'); if (!r.ok) throw 0; enqs = await r.json(); say('', true); drawEnq(); }
+    catch (e) { if (e.message !== 'auth') say('Could not load enquiries.'); }
+  }
+  async function setEnq(id, st, btn) {
+    btn.disabled = true;
+    const r = await api(`/rest/v1/brand_enquiries?id=eq.${encodeURIComponent(id)}`, { method: 'PATCH', json: { status: st }, headers: { Prefer: 'return=minimal' } });
+    if (!r.ok) { btn.disabled = false; return say('Could not update. Please try again.'); }
+    await loadEnq(); say('Moved to ' + st[0].toUpperCase() + st.slice(1) + '.', true);
+  }
+  function drawEnq() {
+    ['new', 'contacted', 'accepted', 'declined'].forEach(s => $('#e-' + s).textContent = '(' + enqs.filter(r => r.status === s).length + ')');
+    const n = enqs.filter(r => r.status === 'new').length; $('#c-enq').textContent = n ? '(' + n + ' new)' : '';
+    document.querySelectorAll('#etabs button').forEach(b => b.classList.toggle('on', b.dataset.e === estatus));
+    const list = enqs.filter(r => r.status === estatus), box = $('#eList'); box.replaceChildren();
+    if (!list.length) { box.append(el('div', { className: 'empty', textContent: 'Nothing here.' })); return; }
+    list.forEach(r => {
+      const ph = String(r.phone || '').replace(/\D/g, ''), link = http(r.link);
+      const meta = el('div', { className: 'row' }, el('span', { textContent: '👤 ' + r.contact_name }), el('span', { textContent: '📞 ' + r.phone }),
+        r.brand_type ? el('span', { textContent: r.brand_type }) : '', r.stage ? el('span', { textContent: 'Stage: ' + r.stage }) : '', r.budget ? el('span', { textContent: 'Budget: ' + r.budget }) : '',
+        link ? el('a', { href: link, target: '_blank', rel: 'noopener', textContent: 'Brand link ↗' }) : '',
+        el('span', { textContent: new Date(r.created_at).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) }));
+      const act = el('div', { className: 'act' });
+      const add = (cls, txt, fn) => { const b = el('button', { className: cls, textContent: txt }); b.onclick = () => fn(b); act.append(b); };
+      if (ph) { const msg = `Hi ${r.contact_name}, this is Gulam from WebVerse. Thanks for reaching out about a collaboration with ${r.brand_name}.`;
+        act.append(el('a', { href: `https://wa.me/${ph}?text=${encodeURIComponent(msg)}`, target: '_blank', rel: 'noopener' }, el('button', { className: 'go', textContent: 'Reply on WhatsApp' }))); }
+      if (r.status !== 'contacted') add('', 'Mark contacted', b => setEnq(r.id, 'contacted', b));
+      if (r.status !== 'accepted') add('', 'Accept', b => setEnq(r.id, 'accepted', b));
+      if (r.status !== 'declined') add('no', 'Decline', b => setEnq(r.id, 'declined', b));
+      add('no', 'Delete', async b => { if (!confirm('Delete this enquiry permanently?')) return; b.disabled = true; const d = await api(`/rest/v1/brand_enquiries?id=eq.${encodeURIComponent(r.id)}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } }); d.ok ? loadEnq() : (b.disabled = false, say('Could not delete.')); });
+      box.append(el('article', { className: 'app' }, el('h3', { textContent: r.brand_name }), el('span', { className: 'role', textContent: r.collab_type }), el('p', { textContent: r.message }), meta, act));
+    });
+  }
+  $('#etabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { estatus = b.dataset.e; drawEnq(); } });
+
+  /* ---------- file picker with preview + remove ---------- */
+  function makePicker(host, { multiple = false, accept = 'image/*', types = ['image/jpeg', 'image/png', 'image/webp'], maxMB = 2 } = {}) {
+    host.className = 'pickhost'; let files = [], urls = [];
+    const input = Object.assign(document.createElement('input'), { type: 'file', accept, multiple, hidden: true });
+    const pick = Object.assign(document.createElement('button'), { type: 'button', className: 'pick' }), list = el('div', { className: 'fl' }), err = el('div', { className: 'ferr', role: 'alert' });
+    host.append(pick, list, err, input);
+    function render() {
+      urls.forEach(u => URL.revokeObjectURL(u)); urls = []; list.replaceChildren();
+      files.forEach((f, i) => {
+        const u = URL.createObjectURL(f); urls.push(u);
+        const rm = el('button', { type: 'button', className: 'frm', textContent: '✕' }); rm.setAttribute('aria-label', 'Remove ' + f.name); rm.onclick = () => { files.splice(i, 1); err.textContent = ''; render(); };
+        list.append(el('div', { className: 'fitem' }, f.type.startsWith('video/') ? el('video', { src: u, muted: true }) : el('img', { src: u, alt: '' }), el('span', { className: 'fn', textContent: f.name + '  (' + (f.size / 1048576).toFixed(1) + ' MB)' }), rm));
+      });
+      pick.textContent = !files.length ? (multiple ? 'Choose files' : 'Choose logo') : (multiple ? 'Add more' : 'Replace');
+    }
+    pick.onclick = () => input.click();
+    input.onchange = () => {
+      const bad = []; const good = [...input.files].filter(f => { if (!types.includes(f.type)) { bad.push(f.name + ': wrong type'); return false; } if (f.size > maxMB * 1048576) { bad.push(f.name + ': over ' + maxMB + ' MB'); return false; } return true; });
+      files = multiple ? files.concat(good) : good.slice(0, 1); err.textContent = bad.join('. '); input.value = ''; render();
+    };
+    render(); return { files: () => files, clear: () => { files = []; err.textContent = ''; render(); } };
+  }
+  const logoPick = makePicker($('#bLogoHost'), { maxMB: 2 });
+  const mediaPick = makePicker($('#mPickHost'), { multiple: true, accept: 'image/jpeg,image/png,image/webp,video/mp4,video/webm', types: ['image/jpeg', 'image/png', 'image/webp', 'video/mp4', 'video/webm'], maxMB: 15 });
+
+  /* ---------- Creators ---------- */
+  let cstatus = 'new', cres = [];
+  async function loadCre() {
+    say('Loading…', true);
+    try { const r = await api('/rest/v1/creator_applications?select=*&order=created_at.desc'); if (!r.ok) throw 0; cres = await r.json(); say('', true); drawCre(); }
+    catch (e) { if (e.message !== 'auth') say('Could not load creators.'); }
+  }
+  async function setCre(id, st, btn) {
+    btn.disabled = true;
+    const r = await api(`/rest/v1/creator_applications?id=eq.${encodeURIComponent(id)}`, { method: 'PATCH', json: { status: st }, headers: { Prefer: 'return=minimal' } });
+    if (!r.ok) { btn.disabled = false; return say('Could not update. Please try again.'); }
+    await loadCre(); say('Moved to ' + st[0].toUpperCase() + st.slice(1) + '.', true);
+  }
+  function drawCre() {
+    ['new', 'contacted', 'accepted', 'declined'].forEach(s => $('#k-' + s).textContent = '(' + cres.filter(r => r.status === s).length + ')');
+    const n = cres.filter(r => r.status === 'new').length; $('#c-cre').textContent = n ? '(' + n + ' new)' : '';
+    document.querySelectorAll('#ctabs button').forEach(b => b.classList.toggle('on', b.dataset.e === cstatus));
+    const list = cres.filter(r => r.status === cstatus), box = $('#cList'); box.replaceChildren();
+    if (!list.length) { box.append(el('div', { className: 'empty', textContent: 'Nothing here.' })); return; }
+    list.forEach(r => {
+      const ph = String(r.phone || '').replace(/\D/g, ''), link = http(r.profile_link);
+      const meta = el('div', { className: 'row' }, el('span', { textContent: '📞 ' + r.phone }), el('span', { textContent: r.platform }), r.niche ? el('span', { textContent: 'Niche: ' + r.niche }) : '', r.experience ? el('span', { textContent: r.experience }) : '', r.followers ? el('span', { textContent: 'Followers: ' + r.followers }) : '', r.city ? el('span', { textContent: '📍 ' + r.city }) : '',
+        link ? el('a', { href: link, target: '_blank', rel: 'noopener', textContent: 'Profile ↗' }) : '', el('span', { textContent: new Date(r.created_at).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) }));
+      const act = el('div', { className: 'act' }); const add = (cls, txt, fn) => { const b = el('button', { className: cls, textContent: txt }); b.onclick = () => fn(b); act.append(b); };
+      if (ph) act.append(el('a', { href: `https://wa.me/${ph}?text=${encodeURIComponent('Hi ' + r.name + ', this is Gulam from WebVerse. Thanks for applying as a creator.')}`, target: '_blank', rel: 'noopener' }, el('button', { className: 'go', textContent: 'Reply on WhatsApp' })));
+      if (r.status !== 'contacted') add('', 'Mark contacted', b => setCre(r.id, 'contacted', b));
+      if (r.status !== 'accepted') add('', 'Accept', b => setCre(r.id, 'accepted', b));
+      if (r.status !== 'declined') add('no', 'Decline', b => setCre(r.id, 'declined', b));
+      add('no', 'Delete', async b => { if (!confirm('Delete this creator application permanently?')) return; b.disabled = true; const d = await api(`/rest/v1/creator_applications?id=eq.${encodeURIComponent(r.id)}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } }); d.ok ? loadCre() : (b.disabled = false, say('Could not delete.')); });
+      box.append(el('article', { className: 'app' }, el('h3', { textContent: r.name }), el('span', { className: 'role', textContent: 'Creator · ' + r.platform }), el('p', { textContent: r.message }), meta, act));
+    });
+  }
+  $('#ctabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { cstatus = b.dataset.e; drawCre(); } });
+
+  /* ---------- Work media ---------- */
+  let projectNames = [];
+  async function loadMedia() {
+    try {
+      if (!projectNames.length) { const mod = await import('./js/data.js'); projectNames = mod.projects.map(p => p.name); $('#mProject').replaceChildren(...projectNames.map(n => el('option', { textContent: n }))); }
+      const r = await api('/rest/v1/project_media?select=*&order=sort.asc,created_at.asc'); if (!r.ok) throw 0; const rows = await r.json(), box = $('#mList'); box.replaceChildren();
+      const by = {}; rows.forEach(x => (by[x.project] = by[x.project] || []).push(x));
+      projectNames.forEach(n => {
+        box.append(el('div', { className: 'group-h', textContent: n + (by[n] ? '' : '  (no media yet)') }));
+        if (!by[n]) return; const g = el('div', { className: 'mgrid' });
+        by[n].forEach(x => {
+          const u = pub('work-media', x.path), del = el('button', { className: 'no', textContent: 'Delete' });
+          del.onclick = async () => { if (!confirm('Delete this ' + x.kind + '?')) return; del.disabled = true; await api(`/storage/v1/object/work-media/${x.path.split('/').map(encodeURIComponent).join('/')}`, { method: 'DELETE' }).catch(() => {}); const d = await api(`/rest/v1/project_media?id=eq.${x.id}`, { method: 'DELETE', headers: { Prefer: 'return=minimal' } }); d.ok ? loadMedia() : (del.disabled = false, say('Could not delete.')); };
+          g.append(el('div', { className: 'mitem' }, x.kind === 'video' ? el('video', { src: u, muted: true, controls: true }) : el('img', { src: u, alt: '' }), del));
+        });
+        box.append(g);
+      });
+    } catch (e) { if (e.message !== 'auth') say('Could not load media.'); }
+  }
+  $('#mForm').onsubmit = async e => {
+    e.preventDefault(); const files = mediaPick.files(), project = $('#mProject').value; if (!files.length) return say('Please choose at least one photo or video.');
+    const btn = e.submitter; btn.disabled = true; let done = 0;
+    try {
+      for (const f of files) {
+        const ext = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'video/mp4': 'mp4', 'video/webm': 'webm' }[f.type];
+        const path = `${project.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 40) || 'project'}/${crypto.randomUUID()}.${ext}`;
+        say(`Uploading ${done + 1} of ${files.length}…`, true);
+        const u = await api(`/storage/v1/object/work-media/${path}`, { method: 'POST', body: f, headers: { 'Content-Type': f.type } }); if (!u.ok) throw 0;
+        const r = await api('/rest/v1/project_media', { method: 'POST', json: { project, kind: f.type.startsWith('video/') ? 'video' : 'image', path, sort: Date.now() % 1000000000 }, headers: { Prefer: 'return=minimal' } }); if (!r.ok) throw 0; done++;
+      }
+      mediaPick.clear(); say(`${done} file(s) uploaded. They are live on your site.`, true); loadMedia();
+    } catch (err) { if (err.message !== 'auth') say(`Upload stopped after ${done} file(s). Please try again.`); }
+    btn.disabled = false;
+  };
+
+  $('#in').onclick = login; $('#pw').addEventListener('keydown', e => e.key === 'Enter' && login()); $('#out').onclick = logout;
+  $('#mainTabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) openTab(b.dataset.t); });
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { status = b.dataset.s; drawApps(); } });
+  if (token) show();
+})();
+</script>
+</body>
+</html>
