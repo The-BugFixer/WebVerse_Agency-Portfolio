@@ -1,718 +1,487 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>WebVerse — Local Growth Agency, Gorakhpur</title>
-  <meta name="description"
-    content="WebVerse helps local businesses get found on Google: Google Business Profile management, local SEO, websites, reels and branding. Based in Gorakhpur, Uttar Pradesh.">
-  <meta name="theme-color" content="#05070d">
-  <meta property="og:title" content="WebVerse — Grow Your Business Locally">
-  <meta property="og:description"
-    content="More visibility. More customers. More growth. Google Business Profile, local SEO and websites for local businesses.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/og.png">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
-  <script
-    type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"WebVerse","description":"Google Business Profile management, local SEO, websites and branding for local businesses.","areaServed":"Gorakhpur, Uttar Pradesh, India","address":{"@type":"PostalAddress","addressLocality":"Gorakhpur","addressRegion":"Uttar Pradesh","addressCountry":"IN"}}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WebVerse — Local Growth Agency, Gorakhpur</title>
+<meta name="description" content="WebVerse helps local businesses get found on Google: Google Business Profile management, local SEO, websites, reels and branding. Based in Gorakhpur, Uttar Pradesh.">
+<meta name="theme-color" content="#05070d">
+<meta property="og:title" content="WebVerse — Grow Your Business Locally">
+<meta property="og:description" content="More visibility. More customers. More growth. Google Business Profile, local SEO and websites for local businesses.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"WebVerse","description":"Google Business Profile management, local SEO, websites and branding for local businesses.","areaServed":"Gorakhpur, Uttar Pradesh, India","address":{"@type":"PostalAddress","addressLocality":"Gorakhpur","addressRegion":"Uttar Pradesh","addressCountry":"IN"}}</script>
 </head>
-
 <body>
-  <canvas id="bg" aria-hidden="true"></canvas>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="progress" aria-hidden="true"><i></i></div>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><i></i></div>
 
-  <!-- 3D cursor -->
-  <div class="cursor" aria-hidden="true">
-    <div class="cursor-ring"><span></span></div>
-    <div class="cursor-3d"><canvas width="160" height="160"></canvas></div>
-  </div>
+<!-- 3D cursor -->
+<div class="cursor" aria-hidden="true">
+  <div class="cursor-ring"><span></span></div>
+  <div class="cursor-3d"><canvas width="160" height="160"></canvas></div>
+</div>
 
-  <header class="nav" id="nav">
-    <a class="brand" href="#top" aria-label="WebVerse home"><img src="assets/logo-wordmark.png" alt="WebVerse"
-        width="180" height="31"></a>
-    <nav class="links" id="mainNav" aria-label="Main">
-      <a href="#services">Services</a><a href="#work">Work</a><a href="#brands">Brands</a><a
-        href="#packages">Packages</a><a href="#process">Process</a><a href="#about">About</a><a href="#team"
-        data-nav-team hidden>Team</a><a href="#join">Join us</a>
-    </nav>
-    <a class="btn btn-sm magnetic" href="#contact">Let’s talk</a>
-    <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
-      aria-controls="mainNav"><span></span><span></span><span></span></button>
-  </header>
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="WebVerse home"><img src="assets/logo-wordmark.png" alt="WebVerse" width="180" height="31"></a>
+  <nav class="links" id="mainNav" aria-label="Main">
+    <a href="#services">Services</a><a href="#work">Work</a><a href="#brands">Brands</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#about">About</a><a href="#team" data-nav-team hidden>Team</a><a href="#join">Join us</a>
+  </nav>
+  <a class="btn btn-sm magnetic" href="#contact">Let’s talk</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+</header>
 
-  <main id="top">
+<main id="top">
 
-    <section class="hero" data-hue="#2de38a" data-x="4.4" data-s="1">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow reveal"><span class="dot"></span> Local growth agency · Gorakhpur, India</p>
-          <h1 class="split" data-split>Grow your Business <em>Locally.</em></h1>
-          <p class="lead reveal" style="--d:.5s">More Visibility. More Customers. More Growth.<br>Google Business
-            Profile, Local SEO and Websites that put Local Businesses on the Map.</p>
-          <div class="cta-row reveal" style="--d:.65s">
-            <a class="btn magnetic" href="#work" data-cursor-label="Explore">View My Work</a>
-            <a class="btn btn-ghost magnetic" data-wa href="#contact">Chat on WhatsApp</a>
-          </div>
-          <dl class="stats reveal" style="--d:.8s">
-            <div>
-              <dt><span data-count="9">0</span></dt>
-              <dd>Client's Projects</dd>
-            </div>
-            <div>
-              <dt><span data-count="8">0</span></dt>
-              <dd>Live Websites &amp; Profiles</dd>
-            </div>
-            <div>
-              <dt><span data-count="5">0</span></dt>
-              <dd>Client's Projects Completed</dd>
-            </div>
-            <div>
-              <dt><span data-count="4">0</span></dt>
-              <dd>Client's Projects Ongoing</dd>
-            </div>
-          </dl>
-        </div>
+<section class="hero" data-hue="#2de38a" data-x="4.4" data-s="1">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow reveal"><span class="dot"></span> Local growth agency · Gorakhpur, India</p>
+      <h1 class="split" data-split>Grow your Business <em>Locally.</em></h1>
+      <p class="lead reveal" style="--d:.5s">More Visibility. More Customers. More Growth.<br>Google Business Profile, Local SEO and Websites that put Local Businesses on the Map.</p>
+      <div class="cta-row reveal" style="--d:.65s">
+        <a class="btn magnetic" href="#work" data-cursor-label="Explore">View My Work</a>
+        <a class="btn btn-ghost magnetic" data-wa href="#contact">Chat on WhatsApp</a>
       </div>
-      <div class="scroll-hint" aria-hidden="true"><span></span></div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section" data-hue="#4f8bff" data-x="-6.2" data-s=".5">
-      <div class="wrap">
-        <p class="eyebrow reveal">What we do</p>
-        <h2 class="reveal">Everything a Local Business needs to be <em>Found and Chosen.</em></h2>
-        <div class="cards">
-          <article class="card tilt reveal"><b class="ico">◎</b>
-            <h3>Google Business Profile</h3>
-            <p>Setup, Optimisation and monthly management: info, categories, photos, posts and reviews.</p>
-          </article>
-          <article class="card tilt reveal" style="--d:.08s"><b class="ico">⌖</b>
-            <h3>Local SEO</h3>
-            <p>Keyword and category work so customers nearby find you when they search on Google and Maps.</p>
-          </article>
-          <article class="card tilt reveal" style="--d:.16s"><b class="ico">▣</b>
-            <h3>Websites</h3>
-            <p>Fast, clean Business Websites with Call and WhatsApp Buttons, built for mobile customers.</p>
-          </article>
-          <article class="card tilt reveal" style="--d:.24s"><b class="ico">▶</b>
-            <h3>Reels &amp; Content</h3>
-            <p>Instagram Reels and Content that show off your food, Services and people.</p>
-          </article>
-          <article class="card tilt reveal" style="--d:.32s"><b class="ico">✦</b>
-            <h3>Logo &amp; Branding</h3>
-            <p>Logos and Visual identity so your Business looks as good as it is.</p>
-          </article>
-          <article class="card tilt reveal" style="--d:.4s"><b class="ico">★</b>
-            <h3>Reviews &amp; Reputation</h3>
-            <p>Review replies and monitoring, plus Advanced Review Management System to collect more genuine reviews.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section id="work" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".5">
-      <div class="wrap">
-        <p class="eyebrow reveal">Selected work · 2025–Till Now</p>
-        <h2 class="reveal">Real Businesses. <em>Real Live Projects.</em></h2>
-        <div class="filters reveal" role="tablist" aria-label="Filter projects">
-          <button class="chip is-on" data-f="all">All</button>
-          <button class="chip" data-f="gbp">Google Business Profile</button>
-          <button class="chip" data-f="web">Websites</button>
-          <button class="chip" data-f="social">Social &amp; Reels</button>
-          <button class="chip" data-f="brand">Branding</button>
-        </div>
-        <div class="work-grid" id="workGrid"></div>
-      </div>
-    </section>
-
-    <section id="brands" class="section" data-hue="#4f8bff" data-x="6.2" data-s=".45">
-      <div class="wrap">
-        <p class="eyebrow reveal">Brand collaboration</p>
-        <h2 class="reveal">Let’s build brands <em>together.</em></h2>
-        <p class="lead reveal">Local businesses and growing start-ups: I create content and help you show up online.
-          Work with me, or tell me what you have in mind.</p>
-
-        <div class="collab-grid">
-          <article class="collab reveal"><span class="ico">▶</span>
-            <h3>Content collaboration</h3>
-            <p>Reels, posts and photos made for your brand and your audience.</p>
-          </article>
-          <article class="collab reveal"><span class="ico">✦</span>
-            <h3>Start-up growth partnership</h3>
-            <p>Google Business Profile, a simple website and content together, for brands that are just starting to
-              grow.</p>
-          </article>
-          <article class="collab reveal"><span class="ico">★</span>
-            <h3>Paid or barter promotion</h3>
-            <p>Paid promotion, or product for content. We agree on it clearly before we start.</p>
-          </article>
-        </div>
-
-        <div id="brandWallBox" hidden>
-          <h3 class="wall-title reveal">Brands I’ve collaborated with</h3>
-          <div class="brand-wall" id="brandWall"></div>
-        </div>
-
-        <div class="contact-grid brand-approach">
-          <div class="reveal join-left">
-            <h3 class="approach-title">Are you a brand or start-up?</h3>
-            <p class="lead">Tell me about your brand and the kind of collaboration you want. Your enquiry reaches me
-              directly and I reply on WhatsApp.</p>
-            <p class="muted">Local brands, new start-ups and growing businesses are all welcome.</p>
-            <p class="mini-h">Kind of collaboration</p>
-            <div class="qchips" data-target="#brandForm [name=collab]" role="group" aria-label="Collaboration type">
-              <button type="button" data-value="Content creation (reels / posts)">Content creation</button>
-              <button type="button" data-value="Start-up growth partnership">Start-up growth</button>
-              <button type="button" data-value="Paid promotion">Paid promotion</button>
-              <button type="button" data-value="Barter (product for content)">Barter</button>
-              <button type="button" data-value="Long-term partnership">Long-term partnership</button>
-            </div>
-            <ol class="join-steps">
-              <li><b>1</b><span><strong>Send your enquiry</strong> Tell me about your brand and what you have in
-                  mind.</span></li>
-              <li><b>2</b><span><strong>I reply on WhatsApp</strong> I get back to you personally.</span></li>
-              <li><b>3</b><span><strong>We plan it together</strong> We agree on the collaboration and start.</span>
-              </li>
-            </ol>
-          </div>
-          <form id="brandForm" class="form tilt reveal" novalidate>
-            <div class="row">
-              <label>Brand name *<input name="brand" required maxlength="80" autocomplete="organization"></label>
-              <label>Contact person *<input name="contact" required maxlength="80" autocomplete="name"></label>
-            </div>
-            <div class="row">
-              <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel"
-                  placeholder="+91 …"></label>
-              <label>Brand type
-                <select name="btype">
-                  <option value="">Choose</option>
-                  <option>Start-up</option>
-                  <option>Local business</option>
-                  <option>Established brand</option>
-                </select>
-              </label>
-            </div>
-            <div class="row">
-              <label>Stage
-                <select name="stage">
-                  <option value="">Choose</option>
-                  <option>Just starting</option>
-                  <option>Growing</option>
-                  <option>Established</option>
-                </select>
-              </label>
-              <label>Collaboration you want *
-                <select name="collab">
-                  <option value="">Choose</option>
-                  <option>Content creation (reels / posts)</option>
-                  <option>Start-up growth partnership</option>
-                  <option>Paid promotion</option>
-                  <option>Barter (product for content)</option>
-                  <option>Long-term partnership</option>
-                  <option>Something else</option>
-                </select>
-              </label>
-            </div>
-            <div class="row">
-              <label>Budget (optional)<input name="budget" maxlength="60"
-                  placeholder="e.g. ₹5,000 / month, or barter"></label>
-              <label>Instagram or website<input name="link" inputmode="url" maxlength="300"
-                  placeholder="https://…"></label>
-            </div>
-            <label>Message *<textarea name="message" rows="4" maxlength="1000"
-                placeholder="Tell me about your brand and what you want to do together."></textarea></label>
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-            <button class="btn magnetic" type="submit">Send enquiry</button>
-            <p class="form-note" id="brandNote" role="status"></p>
-          </form>
-        </div>
-
-        <div class="creators" id="creators">
-          <p class="eyebrow reveal">For content creators</p>
-          <h2 class="reveal creators-h">Create with me. <em>Get brand deals.</em></h2>
-          <div class="contact-grid">
-            <div class="reveal join-left">
-              <p class="lead">Are you a content creator? Join us and get a chance to work on brand deals. <strong>Small
-                  and newly started creators are welcome too</strong>, if you have a good knowledge of social media.</p>
-              <p class="mini-h">Your main platform</p>
-              <div class="qchips" data-target="#creatorForm [name=platform]" role="group" aria-label="Main platform">
-                <button type="button" data-value="Instagram">Instagram</button>
-                <button type="button" data-value="YouTube">YouTube</button>
-                <button type="button" data-value="Facebook">Facebook</button>
-                <button type="button" data-value="Other">Other</button>
-              </div>
-              <ul class="ticks">
-                <li>Instagram, YouTube or any other platform</li>
-                <li>New and small creators are welcome</li>
-                <li>A good understanding of social media</li>
-              </ul>
-              <ol class="join-steps">
-                <li><b>1</b><span><strong>Apply</strong> Share your profile link and a few details.</span></li>
-                <li><b>2</b><span><strong>I review</strong> I check your profile and get back to you on WhatsApp.</span>
-                </li>
-                <li><b>3</b><span><strong>Brand deals</strong> When a brand deal fits your profile, I contact
-                    you.</span></li>
-              </ol>
-            </div>
-            <form id="creatorForm" class="form tilt reveal" novalidate>
-              <div class="row">
-                <label>Full name *<input name="name" required maxlength="80" autocomplete="name"></label>
-                <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel"
-                    placeholder="+91 …"></label>
-              </div>
-              <div class="row">
-                <label>Main platform *
-                  <select name="platform">
-                    <option value="">Choose</option>
-                    <option>Instagram</option>
-                    <option>YouTube</option>
-                    <option>Facebook</option>
-                    <option>Other</option>
-                  </select>
-                </label>
-                <label>Profile link *<input name="link" inputmode="url" maxlength="300" placeholder="https://…"></label>
-              </div>
-              <div class="row">
-                <label>Your niche<input name="niche" maxlength="80" placeholder="e.g. food, fitness, travel"></label>
-                <label>Experience
-                  <select name="experience">
-                    <option value="">Choose</option>
-                    <option>Just starting</option>
-                    <option>Growing</option>
-                    <option>Experienced</option>
-                  </select>
-                </label>
-              </div>
-              <div class="row">
-                <label>Followers (optional)<input name="followers" maxlength="40" placeholder="e.g. 2K"></label>
-                <label>City<input name="city" maxlength="60" autocomplete="address-level2"></label>
-              </div>
-              <label>Tell me about yourself *<textarea name="message" rows="3" maxlength="1000"
-                  placeholder="What kind of content do you create, and what brands would you like to work with?"></textarea></label>
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-              <button class="btn magnetic" type="submit">Join as a creator</button>
-              <p class="form-note" id="creatorNote" role="status"></p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PACKAGES -->
-    <section id="packages" class="section" data-hue="#2de38a" data-x="6.2" data-s=".45">
-      <div class="wrap">
-        <p class="eyebrow reveal">Packages</p>
-        <h2 class="reveal">Simple Pricing. <em>Pay Once, or Monthly.</em></h2>
-        <div class="toggle reveal" role="group" aria-label="Billing">
-          <button class="is-on" data-mode="setup" aria-pressed="true">One-time Setup</button>
-          <button data-mode="month" aria-pressed="false">Monthly Plan</button>
-          <i></i>
-        </div>
-        <p class="mode-note reveal" id="modeNote">Faded points with a line through them are part of the Monthly Plan
-          only.</p>
-        <div class="pricing" id="pricing" data-mode="setup">
-          <article class="plan tilt reveal" style="--c:#2de38a">
-            <header>
-              <h3>Essential Package</h3>
-              <p>Perfect for New &amp; Small Local Businesses</p>
-            </header>
-            <div class="price" data-setup="₹2,999" data-month="₹1,499"><strong>₹2,999</strong><small>One-time</small>
-            </div>
-            <p class="tag">Core Optimisation for a strong start</p>
-            <ul>
-              <li>Google Business Profile Setup / Optimisation</li>
-              <li>Business Information Update</li>
-              <li>SEO-Friendly Business Description</li>
-              <li>Primary Category Optimisation</li>
-              <li>Call button Setup</li>
-              <li>Basic Static Website (with CTA)</li>
-              <li>Up to <span class="v-setup">5-6 Photos</span><span class="v-month">7-8 Photos/Reels</span> Uploads
-              </li>
-              <li class="m"><span class="t">Monthly Profile Health Check</span><span class="vh"> (monthly plan
-                  only)</span></li>
-              <li class="m"><span class="t">Basic Review Management</span><span class="vh"> (monthly plan only)</span>
-              </li>
-              <li class="m"><span class="t">4-5 Google Posts Per Month</span><span class="vh"> (monthly plan
-                  only)</span></li>
-            </ul>
-            <p class="goal"><b>Goal:</b> Build a Solid Online Presence and get Found on Google.</p>
-            <a class="btn btn-ghost magnetic" href="#contact" data-pick="Essential">Choose Essential</a>
-          </article>
-          <article class="plan plan-hot tilt reveal" style="--c:#4f8bff;--d:.1s">
-            <span class="badge">Most popular</span>
-            <header>
-              <h3>Growth Package</h3>
-              <p>Best for Expanding Growing Businesses</p>
-            </header>
-            <div class="price" data-setup="₹5,999" data-month="₹2,999"><strong>₹5,999</strong><small>One-time</small>
-            </div>
-            <p class="tag">Complete Optimisation for Steady Growth</p>
-            <ul>
-              <li>Everything in Essential</li>
-              <li>Complete GBP Optimisation</li>
-              <li>Local SEO Optimisation</li>
-              <li>Keyword Optimisation</li>
-              <li>Products &amp; Services setup</li>
-              <li>Dynamic Website (with CTA)</li>
-              <li>Up to <span class="v-setup">7-8 Photos</span><span class="v-month">8-10 Photos/Reels</span> Uploads
-              </li>
-              <li class="m"><span class="t">Weekly Google Business posts</span><span class="vh"> (monthly plan
-                  only)</span></li>
-              <li class="m"><span class="t">Review Management &amp; Replies</span><span class="vh"> (monthly plan
-                  only)</span></li>
-              <li class="m"><span class="t">Monthly performance report</span><span class="vh"> (monthly plan
-                  only)</span></li>
-              <li class="m"><span class="t">Priority support</span><span class="vh"> (monthly plan only)</span></li>
-            </ul>
-            <p class="goal"><b>Goal:</b> Increase Visibility, get more Leads and stay ahead of Competitors.</p>
-            <a class="btn magnetic" href="#contact" data-pick="Growth">Choose Growth</a>
-          </article>
-          <article class="plan tilt reveal" style="--c:#9b6bff;--d:.2s">
-            <header>
-              <h3>Enterprise Package</h3>
-              <p>For Businesses that want Maximum Growth</p>
-            </header>
-            <div class="price" data-setup="₹9,999" data-month="₹5,999"><strong>₹9,999</strong><small>One-time</small>
-            </div>
-            <p class="tag">Advanced strategies for maximum results</p>
-            <ul>
-              <li>Everything in Growth</li>
-              <li>Advanced Local SEO</li>
-              <li>Content Strategy Analysis</li>
-              <li>AI-Assisted Marketing Support</li>
-              <li>Business Growth Consultation</li>
-              <li>Adv. Dynamic Website (with CTA & SEO)</li>
-              <li>Up to <span class="v-setup">8-10 Photos</span><span class="v-month">12-15 Photos/Reels</span> Uploads
-              </li>
-              <li class="m"><span class="t">Advanced Keyword Tracking</span><span class="vh"> (monthly plan only)</span>
-              </li>
-              <li class="m"><span class="t">Weekly Profile Optimisation</span><span class="vh"> (monthly plan
-                  only)</span></li>
-              <li class="m"><span class="t">Monthly Strategy Call</span><span class="vh"> (monthly plan only)</span>
-              </li>
-              <li class="m"><span class="t">Priority Support</span><span class="vh"> (monthly plan only)</span></li>
-              <li class="m"><span class="t">Detailed Performance Analytics</span><span class="vh"> (monthly plan
-                  only)</span></li>
-            </ul>
-            <p class="goal"><b>Goal:</b> Dominate your Local Area and Achieve long-term Business Growth.</p>
-            <a class="btn btn-ghost magnetic" href="#contact" data-pick="Enterprise">Choose Enterprise</a>
-          </article>
-        </div>
-        <div class="addons reveal">
-          <h3>Additional Services <small>(optional · pricing on request)</small></h3>
-          <ul>
-            <li>Logo Designing &amp; Branding</li>
-            <li>Professional Reels Editing</li>
-            <li>Promotional Video</li>
-            <li>Social Media Management [SMM]</li>
-            <li>Google / Meta Ads</li>
-            <li>Business Strategy</li>
-            <li>Graphics Designing</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section id="process" class="section process" data-hue="#2de38a" data-x="0" data-s=".5">
-      <div class="wrap">
-        <p class="eyebrow reveal">How it works</p>
-        <h2 class="reveal">From Invisible to <em>in Demand</em> in just Four steps.</h2>
-        <ol class="steps" id="steps">
-          <li data-from="tl" style="--i:0"><span>01</span>
-            <h3>Audit</h3>
-            <p>We look at your Current Google Profile, Website and Competitors in your area to find what’s Missing.</p>
-          </li>
-          <li data-from="tr" style="--i:1"><span>02</span>
-            <h3>Set up</h3>
-            <p>Profile, Categories, Description, Services, Photos and Contact Buttons, all set up properly.</p>
-          </li>
-          <li data-from="bl" style="--i:2"><span>03</span>
-            <h3>Launch</h3>
-            <p>Your Website and Profile go Live, with Posts and Content so Customers can see an Active Business.</p>
-          </li>
-          <li data-from="br" style="--i:3"><span>04</span>
-            <h3>Grow</h3>
-            <p>Ongoing Posts, Review Replies and Health Checks, with clear Reporting on the Monthly Plans.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- WHY -->
-    <section class="section" data-hue="#4f8bff" data-x="6.2" data-s=".5">
-      <div class="wrap">
-        <p class="eyebrow reveal">Why WebVerse</p>
-        <h2 class="reveal">We don’t just Promise. <em>We Deliver.</em></h2>
-        <div class="why">
-          <div class="tilt reveal"><b>01</b>
-            <h3>Proven Strategies</h3>
-            <p>Methods used on Real-World Local Businesses, not Theory.</p>
-          </div>
-          <div class="tilt reveal" style="--d:.08s"><b>02</b>
-            <h3>Result Driven</h3>
-            <p>Everything is Aimed at Calls, Visits and Enquiries.</p>
-          </div>
-          <div class="tilt reveal" style="--d:.16s"><b>03</b>
-            <h3>Transparent Reporting</h3>
-            <p>You always know what was Done and Why.</p>
-          </div>
-          <div class="tilt reveal" style="--d:.24s"><b>04</b>
-            <h3>On-Time Delivery</h3>
-            <p>Clear Timelines, Focused Quality, Respected.</p>
-          </div>
-          <div class="tilt reveal" style="--d:.32s"><b>05</b>
-            <h3>Dedicated Support</h3>
-            <p>One Person who knows your Business, on Your WhatsApp.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".45">
-      <div class="wrap about">
-        <div class="about-text">
-          <p class="eyebrow reveal">About</p>
-          <h2 class="reveal">Hi, I’m <em>Gulam Moinuddin.</em><br>Founder & CEO of WebVerse.</h2>
-          <p class="reveal">I’m a freelancer from Gorakhpur helping local Businesses show up on Google and look
-            professional online. Since 2025 I’ve set up and managed Google Business Profiles, built websites and made
-            Instagram reels for food, fitness, event and community Businesses.</p>
-          <p class="reveal">WebVerse is a one-person studio today, with a plan to grow into a team. I’m also a BCA Final
-            Year Student at DDU University, and I’m learning Data Analytics with Python, NumPy and Pandas, with an
-            interest in Businesses, AI & Automation and Cybersecurity.</p>
-          <div class="cta-row reveal">
-            <a class="btn magnetic" href="#contact">Work with Me</a>
-            <a class="btn btn-ghost magnetic" data-ln href="#" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn btn-ghost magnetic" data-gh href="#" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-        <div class="about-side">
-          <figure class="about-photo">
-            <span class="plate plate-b" aria-hidden="true"></span>
-            <span class="plate plate-a" aria-hidden="true"></span>
-            <div class="frame"><img src="assets/gulam.jpg" alt="Gulam, founder of WebVerse" width="800" height="1000"
-                loading="lazy"></div>
-            <figcaption><b>Gulam Moinuddin</b><span>Founder & CEO, WebVerse</span></figcaption>
-          </figure>
-          <div class="about-card tilt reveal">
-            <h3>At a glance</h3>
-            <ul>
-              <li><span>Based in</span><b>Gorakhpur, UP</b></li>
-              <li><span>Status</span><b>Freelancer · Open for Client's Projects</b></li>
-              <li class="has-more"><span>Skills</span><b data-sum="skills">…</b><button type="button" class="more"
-                  data-open="skills">View all</button></li>
-              <li class="has-more"><span>Languages</span><b data-sum="languages">…</b><button type="button" class="more"
-                  data-open="languages">View all</button></li>
-              <li class="has-more"><span>Tools</span><b data-sum="tools">…</b><button type="button" class="more"
-                  data-open="tools">View all</button></li>
-              <li class="has-more"><span>Use cases</span><b data-sum="usecases">…</b><button type="button" class="more"
-                  data-open="usecases">View all</button></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="team" class="section" data-hue="#4f8bff" data-x="-6.2" data-s=".5" hidden>
-      <div class="wrap">
-        <p class="eyebrow reveal">The team</p>
-        <h2 class="reveal">The people behind <em>WebVerse.</em></h2>
-        <div class="team-grid" id="teamGrid"></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact" data-hue="#2de38a" data-x="6.2" data-s=".4">
-      <div class="wrap">
-        <p class="eyebrow reveal">Contact</p>
-        <h2 class="reveal">Let’s grow your Business <em>together.</em></h2>
-        <div class="contact-grid">
-          <div class="reveal join-left">
-            <p class="lead">Tell me about your Business. I’ll reply with how I’d get it found on Google.</p>
-            <div class="tiles">
-              <a class="tile" data-wa href="#contact" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none"
-                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M4 5h16v11H9l-5 4z" />
-                </svg><b>WhatsApp</b><span>Chat with me</span></a>
-              <a class="tile" data-tel href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none"
-                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path
-                    d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z" />
-                </svg><b>Call</b><span data-fill="phone"></span></a>
-              <a class="tile" data-mail href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none"
-                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m3 7 9 6 9-6" />
-                </svg><b>Email</b><span data-fill="email"></span></a>
-              <div class="tile tile-static"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"
-                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
-                  aria-hidden="true">
-                  <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg><b>Location</b><span id="loc"></span></div>
-              <a class="tile" data-book target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24"
-                  width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="16" rx="2" />
-                  <path d="M8 3v4M16 3v4M3 10h18" />
-                </svg><b>Book a call</b><span>Pick a time</span></a>
-              <a class="tile" data-ig target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24" width="22"
-                  height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                  stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                </svg><b>Instagram</b><span>See my work</span></a>
-            </div>
-            <p class="mini-h">I’m interested in</p>
-            <div class="qchips" id="qchips" role="group" aria-label="Quick pick">
-              <button type="button" data-interest="Essential">Essential Package</button>
-              <button type="button" data-interest="Growth">Growth Package</button>
-              <button type="button" data-interest="Enterprise">Enterprise Package</button>
-              <button type="button" data-interest="Website / Logo / Reels">Website / Logo / Reels</button>
-            </div>
-            <p class="mini-h">What happens next</p>
-            <ol class="join-steps">
-              <li><b>1</b><span><strong>You send your message</strong> A few lines about your Business is enough.</span>
-              </li>
-              <li><b>2</b><span><strong>I reply on WhatsApp</strong> With how I’d get your Business found on
-                  Google.</span></li>
-              <li><b>3</b><span><strong>We plan and start</strong> Once you are happy with the plan.</span></li>
-            </ol>
-          </div>
-          <form id="leadForm" class="form tilt reveal" novalidate>
-            <label>Your name<input name="name" required autocomplete="name"></label>
-            <label>Phone / WhatsApp<input name="phone" inputmode="tel" autocomplete="tel"></label>
-            <label>Business name<input name="business"></label>
-            <label>Interested in
-              <select name="package">
-                <option>Not sure yet</option>
-                <option>Essential</option>
-                <option>Growth</option>
-                <option>Enterprise</option>
-                <option>Website / Logo / Reels</option>
-              </select>
-            </label>
-            <label>Message<textarea name="message" rows="4"
-                placeholder="What does your Business do, and what do you want to improve?"></textarea></label>
-            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-            <button class="btn magnetic" type="submit">Send message</button>
-            <p class="form-note" id="formNote" role="status"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN MY TEAM (last) -->
-    <section id="join" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".45">
-      <div class="wrap">
-        <p class="eyebrow reveal">Join My Team</p>
-        <h2 class="reveal">Build WebVerse <em>with me.</em></h2>
-        <p class="lead reveal">Want to work with WebVerse as a team member? Send your Resume/CV. I review every
-          application personally.</p>
-        <ol class="join-steps row3 reveal">
-          <li><b>1</b><span><strong>Apply</strong> Fill in the form and submit it. It takes a minute.</span></li>
-          <li><b>2</b><span><strong>I review</strong> I check your profile and get back to you.</span></li>
-          <li><b>3</b><span><strong>You’re in</strong> Once I approve you, your own identity card goes live on this
-              site.</span></li>
-        </ol>
-        <p class="mini-h reveal">Open to <small>(tap a role to start your application)</small></p>
-        <div class="roles reveal" id="roles"><button type="button" class="role" data-role="Web Developer"><i
-              aria-hidden="true">&lt;/&gt;</i><b>Web Developer</b><span>Apply →</span></button><button type="button"
-            class="role" data-role="GBP & Local SEO"><i aria-hidden="true">◎</i><b>GBP &amp; Local SEO</b><span>Apply
-              →</span></button><button type="button" class="role" data-role="Reels & Video Editor"><i
-              aria-hidden="true">▶</i><b>Reels &amp; Video Editor</b><span>Apply →</span></button><button type="button"
-            class="role" data-role="Graphics Designer"><i aria-hidden="true">✦</i><b>Graphics Designer</b><span>Apply
-              →</span></button><button type="button" class="role" data-role="Content Writer"><i
-              aria-hidden="true">✎</i><b>Content Writer</b><span>Apply →</span></button><button type="button"
-            class="role" data-role="S.M.M Manager"><i aria-hidden="true">◐</i><b>S.M.M Manager</b><span>Apply
-              →</span></button><button type="button" class="role" data-role="Meta Ads Specialist"><i
-              aria-hidden="true">★</i><b>Meta Ads Specialist</b><span>Apply →</span></button></div>
-
-        <form id="joinForm" class="jform form reveal" novalidate>
-          <div class="jparts">
-            <fieldset class="jpart" id="jp1">
-              <legend><b>1</b> About you</legend>
-              <label>Full name *<input name="name" required maxlength="80" autocomplete="name"></label>
-              <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel"
-                  placeholder="+91 …"></label>
-              <label>Role you want *
-                <select name="role">
-                  <option value="">Choose a role</option>
-                  <option>Web Developer</option>
-                  <option>GBP &amp; Local SEO</option>
-                  <option>Reels &amp; Video Editor</option>
-                  <option>Graphics Designer</option>
-                  <option>Content Writer</option>
-                  <option>S.M.M Manager</option>
-                  <option>Meta Ads Specialist</option>
-                  <option>Other</option>
-                </select>
-              </label>
-              <div class="row">
-                <label>City<input name="city" maxlength="60" autocomplete="address-level2"></label>
-                <label>Skills &amp; tools<input name="skills" maxlength="200"
-                    placeholder="e.g. HTML, Canva, Premiere Pro"></label>
-              </div>
-              <label>Profile link (LinkedIn / Instagram / portfolio)<input name="link" inputmode="url" maxlength="300"
-                  placeholder="https://…"></label>
-              <p class="unlock-hint" id="unlockHint">Fill name, WhatsApp number and role to unlock Part 2.</p>
-            </fieldset>
-            <fieldset class="jpart locked" id="jp2" disabled>
-              <legend><b>2</b> Attachments &amp; message</legend>
-              <div class="lockmsg" aria-hidden="true"><span>🔒</span>Complete Part 1 to unlock</div>
-              <label>Short bio (shown on your card) *<textarea name="about" rows="3" maxlength="400"
-                  placeholder="A short intro about you and what you can bring to the team."></textarea></label>
-              <label class="filebox">Your photo (shown on your card if approved)<input type="file" name="photoFile"
-                  accept="image/jpeg,image/png,image/webp"></label>
-              <label class="filebox">CV / Resume (PDF or Word, max 5 MB)<input type="file" name="cv"
-                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
-              <label class="filebox">Other images, e.g. work samples (up to 3, max 3 MB each)<input type="file"
-                  name="images" accept="image/jpeg,image/png,image/webp" multiple></label>
-              <p class="muted attach-note">Your CV and work samples are private, only I can see them. Only your photo,
-                name, role and bio can appear on the website after approval.</p>
-              <label class="check"><input type="checkbox" name="consent"> <span>I agree that my name, role and the
-                  details I share may be shown on this website if I am approved.</span></label>
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
-              <button class="btn magnetic" type="submit">Submit application</button>
-              <p class="form-note" id="joinNote" role="status"></p>
-            </fieldset>
-          </div>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <img src="assets/logo-wordmark.png" alt="WebVerse" width="150" height="26">
-    <p>Your growth is our success.</p>
-    <p class="muted">© <span id="yr"></span> WebVerse · Gorakhpur, India</p>
-  </footer>
-
-  <a class="wa-float magnetic" data-wa href="#contact" aria-label="Chat on WhatsApp" hidden>WhatsApp</a>
-
-  <script src="js/config.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <dialog id="glanceDialog" aria-labelledby="gdTitle">
-    <div class="gd-head">
-      <h3 id="gdTitle"></h3><button type="button" class="gd-x" id="gdClose" aria-label="Close">✕</button>
+      <dl class="stats reveal" style="--d:.8s">
+        <div><dt><span data-count="9">0</span></dt><dd>Client's Projects</dd></div>
+        <div><dt><span data-count="8">0</span></dt><dd>Live Websites &amp; Profiles</dd></div>
+        <div><dt><span data-count="5">0</span></dt><dd>Client's Projects Completed</dd></div>
+        <div><dt><span data-count="4">0</span></dt><dd>Client's Projects Ongoing</dd></div>
+      </dl>
     </div>
-    <div id="gdBody"></div>
-  </dialog>
-</body>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+</section>
 
+<!-- SERVICES -->
+<section id="services" class="section" data-hue="#4f8bff" data-x="-6.2" data-s=".5">
+  <div class="wrap">
+    <p class="eyebrow reveal">What we do</p>
+    <h2 class="reveal">Everything a Local Business needs to be <em>Found and Chosen.</em></h2>
+    <div class="cards">
+      <article class="card tilt reveal"><b class="ico">◎</b><h3>Google Business Profile</h3><p>Setup, Optimisation and monthly management: info, categories, photos, posts and reviews.</p></article>
+      <article class="card tilt reveal" style="--d:.08s"><b class="ico">⌖</b><h3>Local SEO</h3><p>Keyword and category work so customers nearby find you when they search on Google and Maps.</p></article>
+      <article class="card tilt reveal" style="--d:.16s"><b class="ico">▣</b><h3>Websites</h3><p>Fast, clean Business Websites with Call and WhatsApp Buttons, built for mobile customers.</p></article>
+      <article class="card tilt reveal" style="--d:.24s"><b class="ico">▶</b><h3>Reels &amp; Content</h3><p>Instagram Reels and Content that show off your food, Services and people.</p></article>
+      <article class="card tilt reveal" style="--d:.32s"><b class="ico">✦</b><h3>Logo &amp; Branding</h3><p>Logos and Visual identity so your Business looks as good as it is.</p></article>
+      <article class="card tilt reveal" style="--d:.4s"><b class="ico">★</b><h3>Reviews &amp; Reputation</h3><p>Review replies and monitoring, plus Advanced Review Management System to collect more genuine reviews.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".5">
+  <div class="wrap">
+    <p class="eyebrow reveal">Selected work · 2025–Till Now</p>
+    <h2 class="reveal">Real Businesses. <em>Real Live Projects.</em></h2>
+    <div class="filters reveal" role="tablist" aria-label="Filter projects">
+      <button class="chip is-on" data-f="all">All</button>
+      <button class="chip" data-f="gbp">Google Business Profile</button>
+      <button class="chip" data-f="web">Websites</button>
+      <button class="chip" data-f="social">Social &amp; Reels</button>
+      <button class="chip" data-f="brand">Branding</button>
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<section id="brands" class="section" data-hue="#4f8bff" data-x="6.2" data-s=".45">
+  <div class="wrap">
+    <p class="eyebrow reveal">Brand collaboration</p>
+    <h2 class="reveal">Let’s build brands <em>together.</em></h2>
+    <p class="lead reveal">Local businesses and growing start-ups: I create content and help you show up online. Work with me, or tell me what you have in mind.</p>
+
+    <div class="collab-grid">
+      <article class="collab reveal"><span class="ico">▶</span><h3>Content collaboration</h3><p>Reels, posts and photos made for your brand and your audience.</p></article>
+      <article class="collab reveal"><span class="ico">✦</span><h3>Start-up growth partnership</h3><p>Google Business Profile, a simple website and content together, for brands that are just starting to grow.</p></article>
+      <article class="collab reveal"><span class="ico">★</span><h3>Paid or barter promotion</h3><p>Paid promotion, or product for content. We agree on it clearly before we start.</p></article>
+    </div>
+
+    <div id="brandWallBox" hidden>
+      <h3 class="wall-title reveal">Brands I’ve collaborated with</h3>
+      <div class="brand-wall" id="brandWall"></div>
+    </div>
+
+    <div class="cta-cards">
+      <article class="cta-card reveal" id="brand-collab">
+        <p class="eyebrow">For brands</p>
+        <h3>Are you a brand or start-up?</h3>
+        <p class="lead">Tell me about your brand and the kind of collaboration you want. Your enquiry reaches me directly and I reply on WhatsApp.</p>
+        <p class="muted">Local brands, new start-ups and growing businesses are all welcome.</p>
+        <ol class="join-steps">
+          <li><b>1</b><span><strong>Send your enquiry</strong> Tell me about your brand and what you have in mind.</span></li>
+          <li><b>2</b><span><strong>I reply on WhatsApp</strong> I get back to you personally.</span></li>
+          <li><b>3</b><span><strong>We plan it together</strong> We agree on the collaboration and start.</span></li>
+        </ol>
+        <button type="button" class="btn magnetic" data-open-dialog="brandDialog">Send a brand enquiry</button>
+      </article>
+      <article class="cta-card reveal" id="creators" style="--d:.1s">
+        <p class="eyebrow">For content creators</p>
+        <h3>Create with me. Get brand deals.</h3>
+        <p class="lead">Are you a content creator? Join us and get a chance to work on brand deals. <strong>Small and newly started creators are welcome too</strong>, if you have a good knowledge of social media.</p>
+        <ul class="ticks">
+          <li>Instagram, YouTube or any other platform</li>
+          <li>New and small creators are welcome</li>
+          <li>A good understanding of social media</li>
+        </ul>
+        <ol class="join-steps">
+          <li><b>1</b><span><strong>Apply</strong> Share your profile link and a few details.</span></li>
+          <li><b>2</b><span><strong>I review</strong> I check your profile and get back to you on WhatsApp.</span></li>
+          <li><b>3</b><span><strong>Brand deals</strong> When a brand deal fits your profile, I contact you.</span></li>
+        </ol>
+        <button type="button" class="btn magnetic" data-open-dialog="creatorDialog">Join as a creator</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages" class="section" data-hue="#2de38a" data-x="6.2" data-s=".45">
+  <div class="wrap">
+    <p class="eyebrow reveal">Packages</p>
+    <h2 class="reveal">Simple Pricing. <em>Pay Once, or Monthly.</em></h2>
+    <div class="toggle reveal" role="group" aria-label="Billing">
+      <button class="is-on" data-mode="setup" aria-pressed="true">One-time Setup</button>
+      <button data-mode="month" aria-pressed="false">Monthly Plan</button>
+      <i></i>
+    </div>
+    <p class="mode-note reveal" id="modeNote">One-time setups are completed in 15 days, counted from when we receive your payment and details.<br>Faded points with a line through them are part of the Monthly Plan only.</p>
+    <div class="pricing" id="pricing" data-mode="setup">
+      <article class="plan tilt reveal" style="--c:#2de38a">
+        <header><h3>Essential Package</h3><p>Perfect for New &amp; Small Local Businesses</p></header>
+        <div class="price" data-setup="₹2,999" data-month="₹1,499"><strong>₹2,999</strong><small>One-time</small></div>
+        <p class="eta"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Completed in 15 days</p>
+        <p class="tag">Core Optimisation for a strong start</p>
+        <ul>
+          <li>Google Business Profile Setup / Optimisation</li><li>Business Information Update</li><li>SEO-Friendly Business Description</li><li>Primary Category Optimisation</li><li>WhatsApp &amp; Call button Setup</li><li>Up to <span class="v-setup">5-6</span><span class="v-month">7-8</span> Photo Uploads</li><li class="m"><span class="t">Monthly Profile Health Check</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Basic Review Management</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">4-5 Google Posts Per Month</span><span class="vh"> (monthly plan only)</span></li>
+        </ul>
+        <p class="goal"><b>Goal:</b> Build a Solid Online Presence and get Found on Google.</p>
+        <a class="btn btn-ghost magnetic" href="#contact" data-pick="Essential">Choose Essential</a>
+      </article>
+      <article class="plan plan-hot tilt reveal" style="--c:#4f8bff;--d:.1s">
+        <span class="badge">Most popular</span>
+        <header><h3>Growth Package</h3><p>Best for Expanding Growing Businesses</p></header>
+        <div class="price" data-setup="₹5,999" data-month="₹2,999"><strong>₹5,999</strong><small>One-time</small></div>
+        <p class="eta"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Completed in 15 days</p>
+        <p class="tag">Complete Optimisation for Steady Growth</p>
+        <ul>
+          <li>Everything in Essential</li><li>Complete GBP Optimisation</li><li>Local SEO Optimisation</li><li>Keyword Optimisation</li><li>Products &amp; Services setup</li><li>Competitor analysis</li><li>Up to 15 photo uploads</li><li class="m"><span class="t">Weekly Google Business posts</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Review Management &amp; Replies</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Monthly performance report</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Priority support</span><span class="vh"> (monthly plan only)</span></li>
+        </ul>
+        <p class="goal"><b>Goal:</b> Increase Visibility, get more Leads and stay ahead of Competitors.</p>
+        <a class="btn magnetic" href="#contact" data-pick="Growth">Choose Growth</a>
+      </article>
+      <article class="plan tilt reveal" style="--c:#9b6bff;--d:.2s">
+        <header><h3>Enterprise Package</h3><p>For Businesses that want Maximum Growth</p></header>
+        <div class="price" data-setup="₹9,999" data-month="₹5,999"><strong>₹9,999</strong><small>One-time</small></div>
+        <p class="eta"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Completed in 15 days</p>
+        <p class="tag">Advanced strategies for maximum results</p>
+        <ul>
+          <li>Everything in Growth</li><li>Advanced Local SEO</li><li class="m"><span class="t">Reputation Management</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Advanced Keyword Tracking</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Weekly Profile Optimisation</span><span class="vh"> (monthly plan only)</span></li><li>Content Strategy</li><li>AI-Assisted Marketing Support</li><li>Business Growth Consultation</li><li class="m"><span class="t">Monthly Strategy Call</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Priority Support</span><span class="vh"> (monthly plan only)</span></li><li class="m"><span class="t">Detailed Performance Analytics</span><span class="vh"> (monthly plan only)</span></li>
+        </ul>
+        <p class="goal"><b>Goal:</b> Dominate your Local Area and Achieve long-term Business Growth.</p>
+        <a class="btn btn-ghost magnetic" href="#contact" data-pick="Enterprise">Choose Enterprise</a>
+      </article>
+    </div>
+    <div class="addons reveal">
+      <h3>Additional Services <small>(optional · pricing on request)</small></h3>
+      <ul><li>Website Design</li><li>Logo &amp; Branding</li><li>Professional Reels Editing</li><li>Promotional Video</li><li>Social Media Management [SMM]</li><li>Google / Meta Ads</li><li>Business Strategy</li><li>Graphics Designing</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section process" data-hue="#2de38a" data-x="0" data-s=".5">
+  <div class="wrap">
+    <p class="eyebrow reveal">How it works</p>
+    <h2 class="reveal">From Invisible to <em>in Demand</em> in just Four steps.</h2>
+    <ol class="steps" id="steps">
+      <li data-from="tl" style="--i:0"><span>01</span><h3>Audit</h3><p>We look at your Current Google Profile, Website and Competitors in your area to find what’s Missing.</p></li>
+      <li data-from="tr" style="--i:1"><span>02</span><h3>Set up</h3><p>Profile, Categories, Description, Services, Photos and Contact Buttons, all set up properly.</p></li>
+      <li data-from="bl" style="--i:2"><span>03</span><h3>Launch</h3><p>Your Website and Profile go Live, with Posts and Content so Customers can see an Active Business.</p></li>
+      <li data-from="br" style="--i:3"><span>04</span><h3>Grow</h3><p>Ongoing Posts, Review Replies and Health Checks, with clear Reporting on the Monthly Plans.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section" data-hue="#4f8bff" data-x="6.2" data-s=".5">
+  <div class="wrap">
+    <p class="eyebrow reveal">Why WebVerse</p>
+    <h2 class="reveal">We don’t just Promise. <em>We Deliver.</em></h2>
+    <div class="why">
+      <div class="tilt reveal"><b>01</b><h3>Proven Strategies</h3><p>Methods used on Real-World Local Businesses, not Theory.</p></div>
+      <div class="tilt reveal" style="--d:.08s"><b>02</b><h3>Result Driven</h3><p>Everything is Aimed at Calls, Visits and Enquiries.</p></div>
+      <div class="tilt reveal" style="--d:.16s"><b>03</b><h3>Transparent Reporting</h3><p>You always know what was Done and Why.</p></div>
+      <div class="tilt reveal" style="--d:.24s"><b>04</b><h3>On-Time Delivery</h3><p>Clear Timelines, Focused Quality, Respected.</p></div>
+      <div class="tilt reveal" style="--d:.32s"><b>05</b><h3>Dedicated Support</h3><p>One Person who knows your Business, on Your WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".45">
+  <div class="wrap about">
+    <div class="about-text">
+      <p class="eyebrow reveal">About</p>
+      <h2 class="reveal">Hi, I’m <em>Gulam Moinuddin.</em><br>Founder & CEO of WebVerse.</h2>
+      <p class="reveal">I’m a freelancer from Gorakhpur helping local Businesses show up on Google and look professional online. Since 2025 I’ve set up and managed Google Business Profiles, built websites and made Instagram reels for food, fitness, event and community Businesses.</p>
+      <p class="reveal">WebVerse is a one-person studio today, with a plan to grow into a team. I’m also a BCA Final Year Student at DDU University, and I’m learning Data Analytics with Python, NumPy and Pandas, with an interest in Businesses, AI & Automation and Cybersecurity.</p>
+      <div class="cta-row reveal">
+        <a class="btn magnetic" href="#contact">Work with Me</a>
+        <a class="btn btn-ghost magnetic" data-ln href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost magnetic" data-gh href="#" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="about-side">
+    <figure class="about-photo">
+      <span class="plate plate-b" aria-hidden="true"></span>
+      <span class="plate plate-a" aria-hidden="true"></span>
+      <div class="frame"><img src="assets/gulam.jpg" alt="Gulam, founder of WebVerse" width="800" height="1000" loading="lazy"></div>
+      <figcaption><b>Gulam Moinuddin</b><span>Founder & CEO, WebVerse</span></figcaption>
+    </figure>
+    <div class="about-card tilt reveal">
+      <h3>At a glance</h3>
+      <ul>
+        <li><span>Based in</span><b>Gorakhpur, UP</b></li>
+        <li><span>Status</span><b>Freelancer · Open for Client's Projects</b></li>
+        <li class="has-more"><span>Skills</span><b data-sum="skills">…</b><button type="button" class="more" data-open="skills">View all</button></li>
+        <li class="has-more"><span>Languages</span><b data-sum="languages">…</b><button type="button" class="more" data-open="languages">View all</button></li>
+        <li class="has-more"><span>Tools</span><b data-sum="tools">…</b><button type="button" class="more" data-open="tools">View all</button></li>
+        <li class="has-more"><span>Use cases</span><b data-sum="usecases">…</b><button type="button" class="more" data-open="usecases">View all</button></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="section" data-hue="#4f8bff" data-x="-6.2" data-s=".5" hidden>
+  <div class="wrap">
+    <p class="eyebrow reveal">The team</p>
+    <h2 class="reveal">The people behind <em>WebVerse.</em></h2>
+    <div class="team-grid" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section contact" data-hue="#2de38a" data-x="6.2" data-s=".4">
+  <div class="wrap">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="reveal">Let’s grow your Business <em>together.</em></h2>
+    <div class="contact-grid">
+      <div class="reveal join-left">
+        <p class="lead">Tell me about your Business. I’ll reply with how I’d get it found on Google.</p>
+        <div class="tiles">
+          <a class="tile" data-wa href="#contact" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><b>WhatsApp</b><span>Chat with me</span></a>
+          <a class="tile" data-tel href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><b>Call</b><span data-fill="phone"></span></a>
+          <a class="tile" data-mail href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><b>Email</b><span data-fill="email"></span></a>
+          <div class="tile tile-static"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><b>Location</b><span id="loc"></span></div>
+          <a class="tile" data-book target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><b>Book a call</b><span>Pick a time</span></a>
+          <a class="tile" data-ig target="_blank" rel="noopener" href="#" hidden><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg><b>Instagram</b><span>See my work</span></a>
+        </div>
+        <p class="mini-h">I’m interested in</p>
+        <div class="qchips" id="qchips" role="group" aria-label="Quick pick">
+          <button type="button" data-interest="Essential">Essential Package</button>
+          <button type="button" data-interest="Growth">Growth Package</button>
+          <button type="button" data-interest="Enterprise">Enterprise Package</button>
+          <button type="button" data-interest="Website / Logo / Reels">Website / Logo / Reels</button>
+        </div>
+        <p class="mini-h">What happens next</p>
+        <ol class="join-steps">
+          <li><b>1</b><span><strong>You send your message</strong> A few lines about your Business is enough.</span></li>
+          <li><b>2</b><span><strong>I reply on WhatsApp</strong> With how I’d get your Business found on Google.</span></li>
+          <li><b>3</b><span><strong>We plan and start</strong> Once you are happy with the plan.</span></li>
+        </ol>
+      </div>
+      <form id="leadForm" class="form tilt reveal" novalidate>
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Phone / WhatsApp<input name="phone" inputmode="tel" autocomplete="tel"></label>
+        <label>Business name<input name="business"></label>
+        <label>Interested in
+          <select name="package"><option>Not sure yet</option><option>Essential</option><option>Growth</option><option>Enterprise</option><option>Website / Logo / Reels</option></select>
+        </label>
+        <label>Message<textarea name="message" rows="4" placeholder="What does your Business do, and what do you want to improve?"></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+        <button class="btn magnetic" type="submit">Send message</button>
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN MY TEAM (last) -->
+<section id="join" class="section" data-hue="#9b6bff" data-x="6.2" data-s=".45">
+  <div class="wrap">
+    <p class="eyebrow reveal">Join My Team</p>
+    <h2 class="reveal">Build WebVerse <em>with me.</em></h2>
+    <p class="lead reveal">Want to work with WebVerse as a team member? Send your Resume/CV. I review every application personally.</p>
+    <ol class="join-steps row3 reveal">
+      <li><b>1</b><span><strong>Apply</strong> Fill in the form and submit it. It takes a minute.</span></li>
+      <li><b>2</b><span><strong>I review</strong> I check your profile and get back to you.</span></li>
+      <li><b>3</b><span><strong>You’re in</strong> Once I approve you, your own identity card goes live on this site.</span></li>
+    </ol>
+    <p class="mini-h reveal">Open to <small>(tap a role to start your application)</small></p>
+    <div class="roles reveal" id="roles"><button type="button" class="role" data-role="Web Developer"><i aria-hidden="true">&lt;/&gt;</i><b>Web Developer</b><span>Apply →</span></button><button type="button" class="role" data-role="GBP & Local SEO"><i aria-hidden="true">◎</i><b>GBP &amp; Local SEO</b><span>Apply →</span></button><button type="button" class="role" data-role="Reels & Video Editor"><i aria-hidden="true">▶</i><b>Reels &amp; Video Editor</b><span>Apply →</span></button><button type="button" class="role" data-role="Graphics Designer"><i aria-hidden="true">✦</i><b>Graphics Designer</b><span>Apply →</span></button><button type="button" class="role" data-role="Content Writer"><i aria-hidden="true">✎</i><b>Content Writer</b><span>Apply →</span></button><button type="button" class="role" data-role="S.M.M Manager"><i aria-hidden="true">◐</i><b>S.M.M Manager</b><span>Apply →</span></button><button type="button" class="role" data-role="Meta Ads Specialist"><i aria-hidden="true">★</i><b>Meta Ads Specialist</b><span>Apply →</span></button></div>
+
+    <form id="joinForm" class="jform form reveal" novalidate>
+      <div class="jparts">
+        <fieldset class="jpart" id="jp1">
+          <legend><b>1</b> About you</legend>
+          <label>Full name *<input name="name" required maxlength="80" autocomplete="name"></label>
+          <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 …"></label>
+          <label>Role you want *
+            <select name="role"><option value="">Choose a role</option><option>Web Developer</option><option>GBP &amp; Local SEO</option><option>Reels &amp; Video Editor</option><option>Graphics Designer</option><option>Content Writer</option><option>S.M.M Manager</option><option>Meta Ads Specialist</option><option>Other</option></select>
+          </label>
+          <div class="row">
+            <label>City<input name="city" maxlength="60" autocomplete="address-level2"></label>
+            <label>Skills &amp; tools<input name="skills" maxlength="200" placeholder="e.g. HTML, Canva, Premiere Pro"></label>
+          </div>
+          <label>Profile link (LinkedIn / Instagram / portfolio)<input name="link" inputmode="url" maxlength="300" placeholder="https://…"></label>
+          <p class="unlock-hint" id="unlockHint">Fill name, WhatsApp number and role to unlock Part 2.</p>
+        </fieldset>
+        <fieldset class="jpart locked" id="jp2" disabled>
+          <legend><b>2</b> Attachments &amp; message</legend>
+          <div class="lockmsg" aria-hidden="true"><span>🔒</span>Complete Part 1 to unlock</div>
+          <label>Short bio (shown on your card) *<textarea name="about" rows="3" maxlength="400" placeholder="A short intro about you and what you can bring to the team."></textarea></label>
+          <label class="filebox">Your photo (shown on your card if approved)<input type="file" name="photoFile" accept="image/jpeg,image/png,image/webp"></label>
+          <label class="filebox">CV / Resume (PDF or Word, max 5 MB)<input type="file" name="cv" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"></label>
+          <label class="filebox">Other images, e.g. work samples (up to 3, max 3 MB each)<input type="file" name="images" accept="image/jpeg,image/png,image/webp" multiple></label>
+          <p class="muted attach-note">Your CV and work samples are private, only I can see them. Only your photo, name, role and bio can appear on the website after approval.</p>
+          <label class="check"><input type="checkbox" name="consent"> <span>I agree that my name, role and the details I share may be shown on this website if I am approved.</span></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+          <button class="btn magnetic" type="submit">Submit application</button>
+          <p class="form-note" id="joinNote" role="status"></p>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img src="assets/logo-wordmark.png" alt="WebVerse" width="150" height="26">
+      <p>More Visibility. More Customers. More Growth. Local SEO, Google Business Profile and Websites for Local Businesses.</p>
+      <div class="socials" id="footSocials" aria-label="Social links"></div>
+    </div>
+    <nav class="foot-col foot-explore" aria-label="Explore">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#services">Services</a></li><li><a href="#work">Work</a></li><li><a href="#brands">Brands</a></li>
+        <li><a href="#packages">Packages</a></li><li><a href="#process">How it works</a></li><li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li><li><a href="#join">Join my team</a></li>
+      </ul>
+    </nav>
+    <div class="foot-col foot-services">
+      <h4>Services</h4>
+      <ul>
+        <li>Google Business Profile</li><li>Local SEO</li><li>Websites</li>
+        <li>Reels &amp; Content</li><li>Logo &amp; Branding</li><li>Reviews &amp; Reputation</li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <ul id="footContact"></ul>
+    </div>
+  </div>
+  <div class="foot-bar">
+    <p>© <span id="yr"></span> WebVerse · Gorakhpur, India</p>
+    <a class="totop" href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<a class="wa-float magnetic" data-wa href="#contact" aria-label="Chat on WhatsApp" hidden>WhatsApp</a>
+
+<script src="js/config.js"></script>
+<script type="module" src="js/main.js"></script>
+<dialog id="brandDialog" class="fdialog" aria-labelledby="brandDlgTitle">
+  <div class="gd-head"><h3 id="brandDlgTitle">Brand collaboration enquiry</h3><button type="button" class="gd-x" data-close-dialog aria-label="Close">✕</button></div>
+  <form id="brandForm" class="form" novalidate>
+          <p class="mini-h">Kind of collaboration</p>
+        <div class="qchips" data-target="#brandForm [name=collab]" role="group" aria-label="Collaboration type">
+          <button type="button" data-value="Content creation (reels / posts)">Content creation</button>
+          <button type="button" data-value="Start-up growth partnership">Start-up growth</button>
+          <button type="button" data-value="Paid promotion">Paid promotion</button>
+          <button type="button" data-value="Barter (product for content)">Barter</button>
+          <button type="button" data-value="Long-term partnership">Long-term partnership</button>
+        </div>
+          
+        <div class="row">
+          <label>Brand name *<input name="brand" required maxlength="80" autocomplete="organization"></label>
+          <label>Contact person *<input name="contact" required maxlength="80" autocomplete="name"></label>
+        </div>
+        <div class="row">
+          <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 …"></label>
+          <label>Brand type
+            <select name="btype"><option value="">Choose</option><option>Start-up</option><option>Local business</option><option>Established brand</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label>Stage
+            <select name="stage"><option value="">Choose</option><option>Just starting</option><option>Growing</option><option>Established</option></select>
+          </label>
+          <label>Collaboration you want *
+            <select name="collab"><option value="">Choose</option><option>Content creation (reels / posts)</option><option>Start-up growth partnership</option><option>Paid promotion</option><option>Barter (product for content)</option><option>Long-term partnership</option><option>Something else</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label>Budget (optional)<input name="budget" maxlength="60" placeholder="e.g. ₹5,000 / month, or barter"></label>
+          <label>Instagram or website<input name="link" inputmode="url" maxlength="300" placeholder="https://…"></label>
+        </div>
+        <label>Message *<textarea name="message" rows="4" maxlength="1000" placeholder="Tell me about your brand and what you want to do together."></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+        <button class="btn magnetic" type="submit">Send enquiry</button>
+        <p class="form-note" id="brandNote" role="status"></p>
+      </form>
+</dialog>
+<dialog id="creatorDialog" class="fdialog" aria-labelledby="creatorDlgTitle">
+  <div class="gd-head"><h3 id="creatorDlgTitle">Join as a creator</h3><button type="button" class="gd-x" data-close-dialog aria-label="Close">✕</button></div>
+  <form id="creatorForm" class="form" novalidate>
+          <p class="mini-h">Your main platform</p>
+          <div class="qchips" data-target="#creatorForm [name=platform]" role="group" aria-label="Main platform">
+            <button type="button" data-value="Instagram">Instagram</button>
+            <button type="button" data-value="YouTube">YouTube</button>
+            <button type="button" data-value="Facebook">Facebook</button>
+            <button type="button" data-value="Other">Other</button>
+          </div>
+          
+          <div class="row">
+            <label>Full name *<input name="name" required maxlength="80" autocomplete="name"></label>
+            <label>WhatsApp number *<input name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 …"></label>
+          </div>
+          <div class="row">
+            <label>Main platform *
+              <select name="platform"><option value="">Choose</option><option>Instagram</option><option>YouTube</option><option>Facebook</option><option>Other</option></select>
+            </label>
+            <label>Profile link *<input name="link" inputmode="url" maxlength="300" placeholder="https://…"></label>
+          </div>
+          <div class="row">
+            <label>Your niche<input name="niche" maxlength="80" placeholder="e.g. food, fitness, travel"></label>
+            <label>Experience
+              <select name="experience"><option value="">Choose</option><option>Just starting</option><option>Growing</option><option>Experienced</option></select>
+            </label>
+          </div>
+          <div class="row">
+            <label>Followers (optional)<input name="followers" maxlength="40" placeholder="e.g. 2K"></label>
+            <label>City<input name="city" maxlength="60" autocomplete="address-level2"></label>
+          </div>
+          <label>Tell me about yourself *<textarea name="message" rows="3" maxlength="1000" placeholder="What kind of content do you create, and what brands would you like to work with?"></textarea></label>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+          <button class="btn magnetic" type="submit">Join as a creator</button>
+          <p class="form-note" id="creatorNote" role="status"></p>
+        </form>
+</dialog>
+<dialog id="glanceDialog" aria-labelledby="gdTitle">
+  <div class="gd-head"><h3 id="gdTitle"></h3><button type="button" class="gd-x" id="gdClose" aria-label="Close">✕</button></div>
+  <div id="gdBody"></div>
+</dialog>
+</body>
 </html>
