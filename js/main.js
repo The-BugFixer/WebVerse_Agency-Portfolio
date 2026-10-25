@@ -316,7 +316,7 @@ $$('.more').forEach(b => b.addEventListener('click', () => {
 }));
 $('#gdClose').addEventListener('click', () => dlg.close());
 dlg.addEventListener('close', () => { if (curEl) document.body.appendChild(curEl); });
-dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });   // click outside closes
+dlg.addEventListener('click', e => { const r = dlg.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dlg.close(); });   // click outside closes
 
 /* ----- Brand collaboration: logo wall (only brands that have a logo; hidden if none) ----- */
 (async () => {
@@ -534,3 +534,38 @@ $$('.qchips[data-target]').forEach(box => {
   btns.forEach(b => b.addEventListener('click', () => { sel.value = b.dataset.value; sel.dispatchEvent(new Event('change', { bubbles: true })); sync(); }));
   sel.addEventListener('change', sync); sel.form.addEventListener('reset', () => setTimeout(sync, 0)); sync();
 });
+
+
+/* ======================= WEBVERSE08 ======================= */
+/* ----- Popups for the Brand and Creator forms (the 3D cursor travels into the open popup) ----- */
+function openDlg(d) {
+  d.showModal(); if (curEl) d.appendChild(curEl);
+  setTimeout(() => { const f = d.querySelector('form [name=brand], form [name=name]'); if (f) f.focus({ preventScroll: true }); }, 60);
+}
+$$('[data-open-dialog]').forEach(b => b.addEventListener('click', () => openDlg($('#' + b.dataset.openDialog))));
+$$('[data-close-dialog]').forEach(b => b.addEventListener('click', () => b.closest('dialog').close()));
+$$('dialog.fdialog').forEach(d => {
+  d.addEventListener('click', e => { const r = d.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close(); });
+  d.addEventListener('close', () => { if (curEl) document.body.appendChild(curEl); });
+});
+
+/* ----- Footer: social icons and contact links come from js/config.js ----- */
+const SOC = {
+  instagram: ['Instagram', '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/>'],
+  linkedin: ['LinkedIn', '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>'],
+  github: ['GitHub', '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>']
+};
+const footSoc = $('#footSocials');
+Object.entries(SOC).forEach(([k, [label, path]]) => {
+  const url = safeUrl(C[k]); if (!url) return;
+  const a = Object.assign(document.createElement('a'), { href: url, target: '_blank', rel: 'noopener' }); a.setAttribute('aria-label', label);
+  a.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${path}</svg>`;
+  footSoc.append(a);
+});
+if (!footSoc.children.length) footSoc.remove();
+const footContact = $('#footContact');
+[[C.whatsapp, 'WhatsApp', wa()], [C.phone, C.phone ? 'Call ' + C.phone : '', C.phone ? `tel:${String(C.phone).replace(/[^\d+]/g, '')}` : ''], [C.email, C.email, C.email ? `mailto:${C.email}` : ''], [C.bookingUrl, 'Book a call', C.bookingUrl]].forEach(([v, label, href]) => {
+  if (!v || !href) return; const li = document.createElement('li'), a = Object.assign(document.createElement('a'), { href, textContent: label });
+  if (/^https?:/.test(href)) { a.target = '_blank'; a.rel = 'noopener'; } li.append(a); footContact.append(li);
+});
+if (C.location) footContact.append(Object.assign(document.createElement('li'), { textContent: C.location }));
