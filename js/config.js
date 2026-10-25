@@ -20,14 +20,14 @@ window.WEBVERSE = {
   bookingUrl: "",
 
   // 6) Your live website address once deployed (used for share links), e.g. "https://webverse.in"
-  siteUrl: "",
+  siteUrl: "https://the-bugfixer.github.io/WebVerse_Agency-Portfolio/",
 
-  // 8) STARS: background sparkle. Change a number, save, refresh the page.
+  // 8) STARS: background sparkle. Change a number, save, and refresh the page.
   stars: {
     glow: 0.5,         // star glow / sparkle: 0 = off (tiny plain dots), 0.4 = soft (default), 1 = strong
     twinkle: 0.6,      // how much some stars flicker: 0 = steady, 0.4 = gentle (default), 1 = lots
     meteors: true,     // true = a meteor now and then (with a short meteor shower every 5th time), false = none
-    meteorEvery: 25    // roughly how many seconds between meteors (bigger = rarer, minimum 3)
+    meteorEvery: 20    // roughly how many seconds between meteors (bigger = rarer, minimum 3)
   },
 
   // 7) TEAM APPROVALS (free Supabase project, see README section 5).
